@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Gallery</title>
+    <style>
+        div {
+            float: left;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+{% for img in imgArr %}
+<div>
+{{img}}
+    <img src="{{ img }}">
+</div>
+{% endfor %}
+{{test}}
+</body>
+</html>
