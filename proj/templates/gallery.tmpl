@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Gallery</title>
+    <style>
+        div {
+            float: left;
+            padding: 20px;
+        }
+        img {
+            display: block;
+            width: 50%;
+        }
+        p {
+            text-align: center;
+        }
+        a[href] {
+            color: #c6c6c6;
+            text-decoration: none;
+        }
+        a[href]:hover {
+            color: black;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+{% for img in imgs %}
+    <div>
+        <a href="#">
+            <img src="{{ img.url }}" alt="">
+            <p>{{ img.name }}</p>
+        </a>
+    </div>
+{% endfor %}
+
+</body>
+</html>
