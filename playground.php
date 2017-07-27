@@ -37,5 +37,4 @@ $arr = ["a" => 1, "b" => 2, "c" => [1, 2, 3]];
 ob_start();
 var_dump($log->logFileName);
 var_dump($arr);
-
 $log->logMsg(ob_get_contents());
