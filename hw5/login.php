@@ -10,15 +10,15 @@
  */
 
 require_once("models/m_db.php");
-require_once ("models/auth.class.php");
+require_once("models/user.class.php");
 
-// авторизация (точнее в этом слцчае - аутентификация) пользователя
-$user1 = new Auth($link, 'user1', '111');
+$user1 = new User($db, 'user1', '111');
 
-var_dump($user1->ifAuth()); // true
-var_dump($user1->cartShow()); // array(0)
+switch ($user1->ifAuth()) {
+    case true:
+        echo "Authentication complete successfully ! \n<br>";
+        break;
+    default:
+        echo "Authentication FAILED ! \n<br>";
+}
 
-// logout
-$user1->logout();
-
-var_dump($user1->ifAuth()); // false
