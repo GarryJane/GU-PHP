@@ -12,5 +12,13 @@
 require_once("models/m_db.php");
 require_once ("models/auth.class.php");
 
+// авторизация (точнее в этом слцчае - аутентификация) пользователя
 $user1 = new Auth($link, 'user1', '111');
-var_dump($_SESSION);
+
+var_dump($user1->ifAuth()); // true
+var_dump($user1->cartShow()); // array(0)
+
+// logout
+$user1->logout();
+
+var_dump($user1->ifAuth()); // false

@@ -2,16 +2,25 @@
 
 class Auth
 {
+    private $cartArr = []; // массив товаров в корзине
+
     public function __construct($link, $username, $password)
     {
         if (!$this->ifAuth())
             self::login($link, $username, $password);
-        else return true;
+        return true;
     }
 
+    /**
+     * Метод авторизции пользователя.
+     * @param {object} $link - link to BD
+     * @param $username
+     * @param $password
+     * @return bool
+     */
     private function login($link, $username, $password)
     {
-        if($this->ifAuth()) {
+        if ($this->ifAuth()) {
             echo "Вы уже вошли под именем {$_SESSION['user']}!";
             return false;
         }
@@ -30,7 +39,6 @@ class Auth
         }
         return false;
     }
-
     /**
      * Метод определяет авторизован ли пользователь.
      * @return bool
@@ -44,10 +52,25 @@ class Auth
         return false;
     }
 
+    /**
+     * Метод выхода (logout)
+     */
     public function logout()
     {
         unset($_SESSION);
         session_destroy();
         header('Location: login.php');
+    }
+
+    public function cartShow() {
+        return $this->cartArr;
+    }
+
+    public function cartAddProduct($product)
+    {
+    }
+
+    public function cartRmProduct($product_id)
+    {
     }
 }
